@@ -1,7 +1,7 @@
 Sami: an API documentation generator
 ====================================
 
-**WARNING**: Sami is not supported nor maintained anymore. Feel free to fork.
+**WARNING**: Sami is not supported nor maintained by fabpot anymore. This fork has merged the best outstanding PRs
 
 Curious about what Sami generates? Have a look at the `Symfony API`_.
 
@@ -10,7 +10,7 @@ Installation
 
 .. caution::
 
-    Sami requires **PHP 7**.
+    Sami requires **PHP 7.1**.
 
 Get Sami as a `phar file`_:
 
