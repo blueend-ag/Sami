@@ -3,7 +3,7 @@
     "type": "application",
     "description": "Sami, an API documentation generator",
     "keywords": ["phpdoc"],
-    "homepage": "http://sami.sensiolabs.org",
+    "homepage": "https://github.com/blueend-ag/Sami",
     "license": "MIT",
     "authors": [
         {
