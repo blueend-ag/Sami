@@ -12,18 +12,36 @@ Installation
 
     Sami requires **PHP 7.1**.
 
-Get Sami as a `phar file`_:
-
-.. code-block:: bash
-
-    $ curl -O http://get.sensiolabs.org/sami.phar
+Get Sami as a `phar file`_ from the Github Release page.
 
 Check that everything worked as expected by executing the ``sami.phar`` file
-without any arguments:
+with -vvv argument:
 
 .. code-block:: bash
 
-    $ php sami.phar
+    $ php sami.phar -vvv
+    
+
+**Box Requirements Checker**
+
+> Using PHP 7.1.17
+> PHP is using the following php.ini file: /etc/php.ini
+
+> Checking Box requirements:
+
+✔ The application requires the version ">=7.0" or greater.
+
+✔ The package "composer/ca-bundle" requires the extension "openssl". 
+
+✔ The package "composer/ca-bundle" requires the extension "pcre".
+
+✔ The package "nikic/php-parser" requires the extension "tokenizer".
+
+
+[OK] Your system is ready to run the application.
+
+
+    
 
 .. note::
 
@@ -303,7 +321,7 @@ Files are contained into sections, depending on how Sami needs to treat them:
 * ``class``: Templates that should be generated for every class.
 
 .. _Symfony API: http://api.symfony.com/
-.. _phar file:   http://get.sensiolabs.org/sami.phar
+.. _phar file:   https://github.com/blueend-ag/Sami/releases
 .. _Finder:      http://symfony.com/doc/current/components/finder.html
 
 Search Index
