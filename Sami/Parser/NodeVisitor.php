@@ -432,15 +432,18 @@ class NodeVisitor extends NodeVisitorAbstract
             return null;
         }
 
-        $example = $example[0];
-        $file = dirname($this->context->getFile()).'/'.$example[0];
+        $first_line = $example[0];//First line
+        $file = dirname($this->context->getFile()).'/'.$first_line[0];
+        if(!\file_exists($file)){//No file found
+        		return null;
+				}
 
         $contents = file($file, FILE_IGNORE_NEW_LINES);
-        if (empty($contents)) {
+        if (empty($contents)) {//No contents
             return null;
         }
 
-        $contents = array_slice($contents, (($example[1] - 1) ?? 0), ($example[2] ?? $example[3] ?? null));
+        $contents = array_slice($contents, (($first_line[1] - 1) ?? 0), ($first_line[2] ?? $first_line[3] ?? null));
         $endpos = \count($contents) - 1;
         $level = 0;
         $started = false;
@@ -456,11 +459,7 @@ class NodeVisitor extends NodeVisitorAbstract
         }
 
         $content = implode(PHP_EOL, $contents);
-        $highlighted = substr(highlight_string('<?php '.$content, true), 6, -7);
-        $exampleCode = preg_replace('/\<span style\="color\: .*?"\>.*?\<span style\="color\: .*?"\>&lt;\?php&nbsp;\<\/span\>(.*)<\/span\>/is', '$1', $highlighted, 1);
-        $exampleCode = preg_replace('/\<br \/\>(.*?)\<\/span\>/s', '$1</span>', $exampleCode);
-
-        return trim($exampleCode);
+        return $this->highlightExampleCode($content);
     }
 
     protected function resolveSource(NodeAbstract $node, DocBlockNode $comment)
@@ -495,13 +494,18 @@ class NodeVisitor extends NodeVisitorAbstract
         }
 
         $content = implode(PHP_EOL, $contents);
-        $highlighted = substr(highlight_string('<?php '.$content, true), 6, -7);
-        $sourceCode = preg_replace('/\<span style\="color\: .*?"\>.*?\<span style\="color\: .*?"\>&lt;\?php&nbsp;\<\/span\>(.*)<\/span\>/is', '$1', $highlighted, 1);
-        $sourceCode = preg_replace('/\<br \/\>(.*?)\<\/span\>/s', '$1</span>', $sourceCode);
-
         return array(
-            trim($sourceCode),
+            $this->highlightExampleCode($content),
             ($source[2] ?? ""),
         );
     }
+
+		private function highlightExampleCode($exampleCode){
+				$exampleCode = "\n".$exampleCode;
+				$exampleCode = substr(highlight_string('<?php '.$exampleCode, true), 6, -7);//Remove <code></code> wrapper
+				$exampleCode = preg_replace('/\<span style\="color\: .*?"\>.*?\<span style\="color\: .*?"\>&lt;\?php&nbsp;(.*?)\<\/span\>(.*)<\/span\>/is', '$1$2', $exampleCode, 1);
+				//$exampleCode = preg_replace('/\<br \/\>(.*?)\<\/span\>/s', '$1</span>', $exampleCode);
+
+				return trim($exampleCode);
+		}
 }
