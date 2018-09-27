@@ -40,8 +40,6 @@ class Sami extends Container
     {
         parent::__construct();
 
-        $sc = $this;
-
         if (null !== $iterator) {
             $this['files'] = $iterator;
         }
@@ -140,6 +138,7 @@ class Sami extends Container
         $this['traverser'] = function ($sc) {
             $visitors = array(
                 new ClassVisitor\InheritdocClassVisitor(),
+                new ClassVisitor\MixinClassVisitor(),
                 new ClassVisitor\MethodClassVisitor(),
                 new ClassVisitor\PropertyClassVisitor($sc['parser_context']),
             );
