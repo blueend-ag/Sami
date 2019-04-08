@@ -262,17 +262,7 @@ following keys:
 One such example of when overriding the index is useful could be
 documenting dynamically generated API operations of a web service
 client. Here's a simple example that adds dynamically generated API
-operations for a web service client to the search index:
-
-``` jinja
-{% extends "default/sami.js.twig" %}
-
-{% block search_index_extra %}
-    {% for operation in operations -%}
-        {"type": "Operation", "link": "{{ operation.path }}", "name": "{{ operation.name }}", "doc": "{{ operation.doc }}"},
-    {%- endfor %}
-{% endblock %}
-```
+operations for a web service client to the search index.
 
 This example assumes that the template has a variable `operations`
 available which contains an array of operations.
