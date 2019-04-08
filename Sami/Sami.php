@@ -34,7 +34,7 @@ use Sami\Version\Version;
 
 class Sami extends Container
 {
-    const VERSION = '4.1.3-DEV';
+    const VERSION = '4.1.4-DEV';
 
     public function __construct($iterator = null, array $config = array())
     {

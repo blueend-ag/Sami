@@ -12,7 +12,7 @@ Installation
 
     Sami requires **PHP 7.1**.
 
-Get Sami as a `phar file`_ from the Github Release page.
+Get Sami as a `phar file`_ from the Github Release page. ( The phar is generated using https://github.com/humbug/box ) 
 
 Check that everything worked as expected by executing the ``sami.phar`` file
 with -vvv argument:
