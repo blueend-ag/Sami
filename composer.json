@@ -22,7 +22,7 @@
         "symfony/filesystem": "~3.0|~4.0",
         "symfony/yaml": "~3.0|~4.0",
         "symfony/process": "~3.0|~4.0",
-        "phpdocumentor/reflection-docblock": "~2.0",
+        "phpdocumentor/reflection-docblock": "~4.3",
         "blackfire/php-sdk": "^1.5.18"
     },
     "require-dev": {
