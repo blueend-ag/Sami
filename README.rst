@@ -1,7 +1,7 @@
 Sami: an API documentation generator
 ====================================
 
-**WARNING**: Sami is not supported nor maintained by fabpot anymore. This fork has merged the best outstanding PRs
+**WARNING**: Sami is not supported nor maintained by fabpot anymore. This fork has merged the best outstanding PRs.
 
 Curious about what Sami generates? Have a look at the `Symfony API`_.
 
@@ -10,7 +10,7 @@ Installation
 
 .. caution::
 
-    Sami requires **PHP 7.1**.
+    The current build requires **PHP 7.4**. Other versions may work, but have not been tested.
 
 Get Sami as a `phar file`_ from the Github Release page. ( The phar is generated using https://github.com/humbug/box ) 
 
@@ -24,7 +24,7 @@ with -vvv argument:
 
 **Box Requirements Checker**
 
-> Using PHP 7.1.17
+> Using PHP 7.x
 > PHP is using the following php.ini file: /etc/php.ini
 
 > Checking Box requirements:
@@ -385,3 +385,13 @@ which contains an array of operations.
 
     Always include a trailing comma for each entry you add to the index. Sami
     will take care of ensuring that trailing commas are handled properly.
+
+
+Building sami.phar
+~~~~~~~~~~~~~~~~~~
+
+1. Clone/Download this repo
+2. Run composer to update/install all dependencies ``composer update``
+2. Download box.phar from https://github.com/box-project/box/releases/ and make it executable (e.g. ``chmod 755 ./box.phar`` )
+4. Run ``./box.phar compile`` to compile sami.phar from source using box.json
+5. Check your phar with ``./box.phar info bin/sami.phar``
